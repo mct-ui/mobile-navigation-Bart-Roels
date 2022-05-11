@@ -3,24 +3,26 @@
 \*------------------------------------*/
 
 @font-face {
-    font-family: "HK Grotesk Web";
+    font-family: 'HK Grotesk Web';
     font-weight: 200;
-    src: url("../fonts/hkgrotesk-light-webfont.woff2") format("woff2"),
-        url("../fonts/hkgrotesk-light-webfont.woff") format("woff");
+    src: url('../fonts/hkgrotesk-light-webfont.woff') format('woff');
+    screen: url('../fonts/hkgrotesk-light-webfont.woff2') format('woff2');
 }
 
 @font-face {
-    font-family: "HK Grotesk Web";
+    font-family: 'HK Grotesk Web';
     font-weight: 400;
-    src: url("../fonts/hkgrotesk-regular-webfont.woff2") format("woff2"),
-        url("../fonts/hkgrotesk-regular-webfont.woff") format("woff");
+    src: url('../fonts/hkgrotesk-regular-webfont.woff') format('woff');
+    src: url('../fonts/hkgrotesk-regular-webfont.woff2') format('woff2');
+
 }
 
 @font-face {
-    font-family: "HK Grotesk Web";
+    font-family: 'HK Grotesk Web';
     font-weight: 600;
-    src: url("../fonts/hkgrotesk-medium-webfont.woff2") format("woff2"),
-        url("../fonts/hkgrotesk-medium-webfont.woff") format("woff");
+    src: url("../fonts/hkgrotesk-medium-webfont.woff") format('woff');
+    src: url("../fonts/hkgrotesk-medium-webfont.woff2") format('woff2');
+
 }
 
 /*------------------------------------*\
@@ -33,20 +35,16 @@
     Global page styles + universal box-sizing:
 */
 
+
+
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: "HK Grotesk Web", Helvetica, arial, sans-serif;
+    font-family: "HK Grotesk Web", sans-serif;
     color: #202024;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
 }
 
 @media (min-width: 768px) {
@@ -55,6 +53,15 @@ html {
         line-height: 1.6;
     }
 }
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
+
 
 /*
  * Remove text-shadow in selection highlight:
@@ -90,26 +97,23 @@ img {
     Default markup for typographic elements
 */
 
-h1,
-h2,
-h3 {
-    font-weight: 200;
-}
-
 h1 {
     font-size: 36px;
+    font-weight: 200;
     line-height: 48px;
     margin: 0 0 24px;
 }
 
 h2 {
     font-size: 32px;
+    font-weight: 200;
     line-height: 40px;
     margin: 0 0 24px;
 }
 
 h3 {
     font-size: 26px;
+    font-weight: 200;
     line-height: 32px;
     margin: 0 0 24px;
 }
@@ -175,14 +179,13 @@ a {
 }
 
 a:visited,
-a:active {
-    color: #3E3EA8;
-}
-
+a:active,
 a:hover,
 a:focus {
     color: #3E3EA8;
 }
+
+
 
 /*------------------------------------*\
   #OBJECTS
@@ -198,24 +201,13 @@ a:focus {
     position: relative;
     padding: 24px 24px 0;
     display: flow-root;
-    /* New solution! Fixes margin collapsing */
-}
-
-/* color modifiers */
-
-.o-row--neutral-x-light {
-    background-color: #F7F7FA;
-}
-
-.o-row--gradient-1 {
-    background: linear-gradient(to top right, #5051DB, #3887F7);
-    color: #fff;
 }
 
 /* size modifiers */
 
 .o-row--lg {
     padding: 48px 24px 24px;
+
 }
 
 @media (min-width: 768px) {
@@ -233,13 +225,19 @@ a:focus {
         padding-top: 72px;
         padding-bottom: 48px;
     }
+
+
 }
 
-/* padding clear modifiers */
-
-.o-row--clear-top {
-    padding-top: 0;
+.o-row—neutral-x-light {
+    background-color: #F7F7F7;
 }
+
+.o-row-gradient {
+    background: linear-gradient(to top right, #5051DB 0%, #3887F7 100%);
+    color: #F7F7F7;
+}
+
 
 /*
     Objects: Container
@@ -252,36 +250,8 @@ a:focus {
     margin-right: auto;
     width: 100%;
     max-width: 56.4em;
-    /* 56.4 * 20px = 1128px */
-}
-
-/*
-    Objects: section
-    ---
-    Creates vertical whitespace between adjacent sections inside a row
-*/
-
-.o-section {
-    display: flow-root;
-    /* New solution! Fixes margin collapsing */
-}
-
-.o-section+.o-section {
-    padding-top: 24px;
-}
-
-@media (min-width: 768px) {
-
-    .o-section--lg+.o-section--lg,
-    .o-section--xl+.o-section--xl {
-        padding-top: 48px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .o-section--xl+.o-section--xl {
-        padding-top: 72px;
-    }
+    /*  (1 ÷ font-size) × px = em */
+    /* 90 * 16px = 1440px */
 }
 
 /*
@@ -401,15 +371,114 @@ a:focus {
     align-content: space-between;
 }
 
+.item_align_self {
+    align-self: flex-start;
+}
+
+/*
+    Objects: section
+    ---
+    Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+    display: flow-root;
+    /* Prevent margin collapsing*/
+}
+
+.o-section+.o-section {
+    margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+
+    .o-section--lg+.o-section--lg,
+    .o-section--xl+.o-section--xl {
+        margin-top: 48px;
+    }
+
+    /* Als twee o-section larges op elkaar volgen, zet deze margin op 48px */
+}
+
+@media (min-width: 1200px) {
+    .o-section--xl+.o-section--xl {
+        margin-top: 72px;
+    }
+}
+
+
+
+
+/*------------------------------------*\
+  #COMPONENTS
+\*------------------------------------*/
+
+/*
+    Component: header
+    ---
+    Main header of the website
+*/
+
+.c-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.c-header__nav {
+    display: none;
+}
+
+.c-header__mobile-nav-trigger {
+    display: block;
+}
+
+
+
+@media (min-width: 992px) {
+    .c-header__nav {
+        display: block;
+    }
+
+    .c-header__mobile-nav-trigger {
+        display: none;
+    }
+}
+
+/*
+    Component: Logo
+    ---
+    Website main logo
+*/
+
+.c-logo {
+    height: 32px;
+}
+
+.c-logo__svg {
+    height: 100%;
+}
+
+.c-logo__symbol {
+    height: 100%;
+}
+
+
+@media (min-width: 768px) {
+    .c-logo__symbol {
+        height: 40px;
+    }
+}
+
 /*
     Objects: List
     ---
     Small reusable object to remove default list styling from lists
 */
 
-.o-list {
+.o-list-reset {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 /*
@@ -441,137 +510,6 @@ a:focus {
     -webkit-appearance: none;
 }
 
-/*------------------------------------*\
-  #COMPONENTS
-\*------------------------------------*/
-
-/*
-    Component: Logo
-    ---
-    Website main logo
-*/
-
-.c-logo {
-    height: 32px;
-    display: flex;
-    align-items: center;
-}
-
-.c-logo__symbol {
-    height: 100%;
-}
-
-@media (min-width: 768px) {
-    .c-logo {
-        height: 40px;
-    }
-}
-
-/*
-    Component: header
-    ---
-    Main header of the website
-*/
-
-.c-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.c-header__nav {
-    display: none;
-}
-
-@media (min-width: 992px) {
-    .c-header__nav {
-        display: block;
-    }
-
-    .c-header__nav--main {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin-top: 12px;
-    }
-
-    .c-header__mobile-nav-trigger {
-        display: none;
-    }
-}
-
-/*
-    Component: footer
-    ---
-    Main footer of the website
-*/
-
-.c-footer {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.c-footer__logo {
-    width: 100%;
-}
-
-.c-footer__nav {
-    width: 50%;
-}
-
-@media (min-width: 768px) {
-    .c-footer {
-        justify-content: center;
-        align-items: center;
-    }
-
-    .c-footer__logo {
-        display: flex;
-        justify-content: center;
-        padding: 0 12px;
-    }
-
-    .c-footer__nav {
-        width: auto;
-        padding: 0 16px;
-    }
-}
-
-@media (min-width: 992px) {
-    .c-footer {
-        justify-content: space-between;
-    }
-
-    .c-footer__nav {
-        padding: 0;
-    }
-
-    .c-footer__logo+.c-footer__nav {
-        order: -1;
-    }
-
-    .c-footer__logo {
-        width: auto;
-    }
-
-    /*
-        Bonus: real centering with CSS
-        Checkout: https://css-tricks.com/centering-css-complete-guide/
-    */
-
-    /* .c-footer__logo {
-        width: auto;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .c-footer__logo .c-logo {
-        margin-bottom: 0;
-    } */
-}
 
 /*
     Component: Nav
@@ -591,7 +529,28 @@ a:focus {
 .c-nav-trigger__svg {
     fill: #202024;
     height: 100%;
+
 }
+
+.c-nav-trigger__svg__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    width: 24px;
+    height: 24px;
+
+}
+
+.c-nav-trigger__svg__close:hover {
+    fill: #3E3EA8;
+    transform: scale(1.3);
+}
+
+.c-nav-trigger__svg__close:active {
+    transform: rotate(-90deg);
+}
+
 
 .c-nav {
     font-size: 18px;
@@ -603,41 +562,167 @@ a:focus {
 }
 
 .c-nav__link {
+    display: block;
     text-decoration: none;
     font-weight: 400;
-    display: block;
     padding: 8px 0;
+    /* Er voor te zorgen als gebruiker klein beetje meer plek om op te kliken --> Padding werkt niet omdat inline element is --> Display block */
 }
+
 
 .c-nav__link,
 .c-nav__link:visited,
 .c-nav__link:active {
-    color: #202024;
+    color: #202024
 }
 
 .c-nav__link--meta,
 .c-nav__link--meta:visited,
 .c-nav__link--meta:active {
-    color: #6C6C75;
+    color: #6c6c75
 }
 
 .is-selected .c-nav__link,
 .c-nav__link:hover,
 .c-nav__link:focus {
-    color: #5051db;
+    color: #5051DB;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     .c-nav__list {
         display: flex;
-        margin-left: -16px;
-        margin-right: -16px;
+        gap: 32px;
+        /* Wit ruite tussen de items */
     }
 
     .c-nav__link {
         padding: 8px 16px;
     }
+
+    .c-nav__link__mobile {
+        padding: 8px 0px;
+    }
 }
+
+.c-nav__list--gap-lg {
+    gap: 48px !important;
+}
+
+/*
+    Component: figure
+    ---
+    Special type of figure and figcaption
+*/
+
+.c-figure {
+    position: relative;
+}
+
+.c-figure__caption {
+    line-height: 15px;
+    margin-top: 8px;
+    padding-left: 6px;
+    padding-top: 1px;
+    border: 2px solid #5051DB;
+    border-width: 0 0 0 2px;
+}
+
+@media (min-width: 768px) {
+    .c-figure__caption--absolute {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right: 8px;
+        text-align: right;
+        background-color: #fff;
+        padding: 16px;
+        max-width: 260px;
+        border-width: 0 4px 0 0;
+    }
+}
+
+
+
+/*
+    Component: footer
+    ---
+    Main footer of the website
+*/
+
+.c-footer {
+    font-size: 18px;
+    line-height: 24px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.c-footer__logo {
+    height: 32px;
+}
+
+@media (min-width: 320px) {
+    .c-footer__nav__1 {
+        width: 100%;
+    }
+
+    .c-footer_linkitems {
+        display: flex;
+        padding-right: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .c-footer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .c-footer__nav__1 {
+        order: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .c-footer__nav__2 {
+        order: 1;
+    }
+
+    .c-footer__nav__3 {
+        order: 2;
+    }
+
+
+}
+
+@media (min-width: 992px) {
+    .c-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+    }
+
+    .c-footer__nav__1 {
+        order: 1;
+        width: auto;
+        display: block;
+    }
+
+    .c-footer__nav__2 {
+        order: 0;
+        display: block;
+    }
+
+    .c-footer__nav__3 {
+        order: 2;
+        display: block;
+    }
+
+}
+
+
 
 /*
     Component: Lead
@@ -713,66 +798,7 @@ a:focus {
     }
 }
 
-/*
-    Component: figure
-    ---
-    Special type of figure and figcaption
-*/
 
-.c-figure {
-    position: relative;
-}
-
-.c-figure__caption {
-    line-height: 15px;
-    margin-top: 8px;
-    padding-left: 6px;
-    padding-top: 1px;
-    border: 2px solid #5051DB;
-    border-width: 0 0 0 2px;
-}
-
-@media (min-width: 768px) {
-    .c-figure__caption--absolute {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin-right: 8px;
-        text-align: right;
-        background-color: #fff;
-        padding: 16px;
-        max-width: 260px;
-        border-width: 0 4px 0 0;
-    }
-}
-
-/*
-    Component: Title icon
-    ---
-    Special type of title with icon
-*/
-
-.c-title-icon {
-    display: flex;
-    align-items: flex-start;
-}
-
-.c-title-icon__icon {
-    height: 70px;
-    margin-right: 20px;
-}
-
-@media (min-width: 768px) {
-    .c-title-icon__icon {
-        height: 84px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .c-title-icon__icon {
-        height: 112px;
-    }
-}
 
 /*
     Component: CTA link
@@ -798,19 +824,21 @@ a:focus {
 }
 
 .c-link-cta::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
+
     bottom: 0;
     left: 0;
     height: 1px;
     width: 100%;
+
     background-color: #7373F5;
     transform: scaleX(.5);
     transform-origin: left;
     transition-property: transform, background-color;
     transition-duration: .175s;
-    transition-timing-function: ease-in;
+    transition-timing-function: ease;
 }
 
 .c-link-cta:hover {
@@ -822,41 +850,151 @@ a:focus {
     background-color: #3E3EA8;
 }
 
-/* inversed */
-
+/* Inversed */
 .c-link-cta--inverse,
 .c-link-cta--inverse:visited,
-.c-link-cta--inverse:active,
-.c-link-cta--inverse:hover {
-    color: #fff;
+.c-link-cta--inverse:active {
+    color: #F7F7F7 !important;
 }
 
-.c-link-cta--inverse::after,
-.c-link-cta--inverse:hover::after {
-    background-color: #fff;
+.c-link-cta--inverse::after {
+    background-color: #F7F7F7 !important;
 }
+
+.c-link-cta--inverse:hover::after {
+    color: #F7F7F7 !important;
+}
+
+/*
+    Component: Titel icon
+    ---
+*/
+
+/*
+    Component: Title icon
+    ---
+    Special type of title with icon
+*/
+
+.c-title-icon {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.c-title-icon__icon {
+    height: 70px;
+}
+
+@media (min-width: 768px) {
+    .c-title-icon__icon {
+        height: 84px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .c-title-icon__icon {
+        height: 112px;
+    }
+}
+
+/*
+    Component: mobile nav
+    ---
+    Dedicated mobile nav component
+*/
+
+.c-mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.has-mobile-nav .c-mobile-nav {
+    pointer-events: all;
+}
+
+
+.c-mobile-nav__body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 24px;
+}
+
+.c-mobile-nav__nav {
+    display: flex;
+}
+
+
+.c-mobile-nav__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.c-mobile-nav__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #202024;
+    will-change: opacity;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+
+}
+
+.has-mobile-nav .c-mobile-nav__bg {
+    opacity: 0.5;
+}
+
+.c-mobile-nav__body {
+    position: relative;
+    padding: 24px;
+    height: 100vh;
+    width: 100vw;
+    background-color: #fff;
+
+    will-change: transform;
+    transform: translateX(-100%);
+    transition: transform 0.75s ease;
+
+}
+
+.has-mobile-nav .c-mobile-nav__body {
+    transform: translateX(0);
+}
+
+@media (min-width: 768px) {
+    .c-mobile-nav__body {
+        padding: 48px;
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    /* Hide the mobile nav on larger viewports even whent it's open on smaller screens */
+    .c-mobile-nav {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
 
 /*------------------------------------*\
   #UTILITIES
 \*------------------------------------*/
-
-/*
-    Utilities: color
-    ---
-    Utility classes to put specific colors onto elements
-*/
-
-.u-color-primary-light {
-    color: #7373F5;
-}
-
-.u-color-primary-base {
-    color: #5051DB;
-}
-
-.u-color-primary-dark {
-    color: #3E3EA8;
-}
 
 /*
     Utilities: spacing
@@ -868,35 +1006,22 @@ a:focus {
     padding-top: 0 !important;
 }
 
-.u-mb-clear {
+.u-mgb-clear {
+    padding-bottom: 0 !important;
+}
+
+.u-marginBottem-clear {
     margin-bottom: 0 !important;
 }
 
-.u-mb-xs {
-    margin-bottom: 4px !important;
-}
-
-.u-mb-sm {
-    margin-bottom: 8px !important;
-}
-
-.u-mb-md {
-    margin-bottom: 16px !important;
-}
-
-.u-mb-lg {
-    margin-bottom: 32px !important;
-}
-
-.u-mb-xl {
-    margin-bottom: 48px !important;
-}
 
 /*
     Utilities: max-width
     ---
     Utility classes to put specific max widths onto elements
 */
+
+/* Maxiumum breedte zetten */
 
 .u-max-width-xs {
     max-width: 18em !important;
@@ -1164,6 +1289,26 @@ a:focus {
         flex-basis: calc(100% / 6 * 5) !important;
     }
 }
+
+/*
+    Utilities: color
+    ---
+    Utility classes to put specific colors onto elements
+*/
+
+.u-color-primary-light {
+    color: #7373f5 !important;
+}
+
+.u-color-primary-base {
+    color: #5051DB !important;
+}
+
+.u-color-primary-dark {
+    color: #3E3EA8 !important;
+}
+
+
 
 /*------------------------------------*\
   #MEDIA
